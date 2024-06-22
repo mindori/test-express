@@ -4,10 +4,14 @@ const app = express();
 const port = 3000;
 
 app.get("/", async (req, res) => {
-  const response = await axios.get(
-    `https://jsonplaceholder.typicode.com/todos/1`
-  );
-  res.send(response);
+  try {
+    const response = await axios.get(
+      `https://jsonplaceholder.typicode.com/todos/1`
+    );
+    res.send(response.data);
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
 });
 
 app.get("/healthz", (req, res) => {
