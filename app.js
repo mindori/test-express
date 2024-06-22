@@ -4,7 +4,9 @@ const app = express();
 const port = 3000;
 
 app.get("/", async (req, res) => {
-  const response = await axios.get(`https://www.naver.com`);
+  const response = await axios.get(
+    `https://jsonplaceholder.typicode.com/todos/1`
+  );
   res.send(response);
 });
 
